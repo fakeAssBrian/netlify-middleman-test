@@ -1,0 +1,17 @@
+doctype html
+html itemscope='' itemtype='http://schema.org/WebPage' lang=data.site.language
+  head
+    = partial "partials/meta"
+    /! Use title if it's in the page YAML frontmatter
+    = partial "partials/favicon"
+    = partial "partials/fonts"
+
+    - if current_page.data.preferred_url
+      link rel='canonical' href=current_page.data.preferred_url
+
+    = stylesheet_inline_tag "site"
+    = javascript_include_tag :all, async: true
+
+  body class=page_classes
+    main role='main'
+      = yield
