@@ -89,6 +89,11 @@ configure :build do
   activate :directory_indexes # Pretty URLs
   activate :minify_css
   activate :minify_javascript
+  activate :imageoptim do |options|
+    options.manifest = true
+    options.pngout = false
+    options.svgo = false
+  end
   activate :asset_hash # Enable cache buster
   activate :gzip
   activate :robots, rules: [
